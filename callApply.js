@@ -5,10 +5,10 @@ const normalPerson = {
     getFullName: function(){
         console.log(this.firstName, this.lastName)
     },
-    chargeBill: function(amount){
-        this.salary = this.salary - amount;
+    chargeBill: function(amount, tips, tax){
+        this.salary = this.salary - amount - tips - tax;
         this.salary;
-    },
+    }
 }
 
 const heroPerson = {
@@ -25,13 +25,19 @@ const friendlyPerson = {
 
 // normalPerson.chargeBill();
 
-const heroChargeBill = normalPerson.chargeBill.bind(heroPerson);
+// ## ===>> Bind function
+// const heroChargeBill = normalPerson.chargeBill.bind(heroPerson);
+// const friendlyPersonBill = normalPerson.chargeBill.bind(friendlyPerson);
+// friendlyPersonBill(2300)
+// console.log(friendlyPerson.salary);
 
-const friendlyPersonBill = normalPerson.chargeBill.bind(friendlyPerson);
+// heroChargeBill(2000);
+// console.log(heroPerson.salary)
 
-friendlyPersonBill(2300)
-console.log(friendlyPerson.salary);
+//## ===>> Call function
+// normalPerson.chargeBill.call(heroPerson, 900, 100, 10);
+// console.log(heroPerson.salary);
 
-
-heroChargeBill(2000);
-console.log(heroPerson.salary)
+// ## ===>> Apply function
+normalPerson.chargeBill.apply(heroPerson, [5000, 800, 200]);
+console.log(heroPerson.salary);
